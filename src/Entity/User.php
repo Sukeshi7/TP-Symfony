@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\UserRoleEnum;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,9 +15,6 @@ class User
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -36,6 +34,15 @@ class User
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'id_user', orphanRemoval: true)]
     private Collection $comments;
 
+    #[ORM\Column(length: 255)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(enumType: UserRoleEnum::class)]
+    private ?UserRoleEnum $role = null;
+
 
     public function __construct()
     {
@@ -46,18 +53,6 @@ class User
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -140,6 +135,42 @@ class User
                 $comment->setIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getRole(): ?UserRoleEnum
+    {
+        return $this->role;
+    }
+
+    public function setRole(UserRoleEnum $role): static
+    {
+        $this->role = $role;
 
         return $this;
     }
