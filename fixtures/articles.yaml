@@ -1,0 +1,47 @@
+App\Entity\Article:
+    article_template (template):
+        id_user: '<randomElement([@user_user_1, @user_user_2, @user_user_3, @user_user_4, @user_user_5])>'
+        title: '<sentence()>'
+        content: '<paragraphs(3, true)>'
+        creation_date: '<dateTimeBetween("-30 days", "-10 days")>'
+        update_date: '<dateTimeBetween("-10 days", "-3 days")>'
+
+    article_cat_economy_fr_{1..3} (extends article_template):
+        id_category: '@cat_economy'
+        id_language: '@french'
+
+    article_cat_culture_fr_{1..3} (extends article_template):
+        id_category: '@cat_culture'
+        id_language: '@french'
+
+    article_cat_internet_fr_{1..3} (extends article_template):
+        id_category: '@cat_internet'
+        id_language: '@french'
+
+    article_cat_science_fr_{1..3} (extends article_template):
+        id_category: '@cat_science'
+        id_language: '@french'
+
+    article_cat_sport_fr_{1..3} (extends article_template):
+        id_category: '@cat_sport'
+        id_language: '@french'
+
+    article_cat_economy_en_{1..2} (extends article_template):
+        id_category: '@cat_economy'
+        id_language: '@english'
+
+    article_cat_culture_en_{1..2} (extends article_template):
+        id_category: '@cat_culture'
+        id_language: '@english'
+
+    article_cat_internet_en_{1..2} (extends article_template):
+        id_category: '@cat_internet'
+        id_language: '@english'
+
+    article_cat_science_en_{1..2} (extends article_template):
+        id_category: '@cat_science'
+        id_language: '@english'
+
+    article_cat_sport_en_{1..2} (extends article_template):
+        id_category: '@cat_sport'
+        id_language: '@english'

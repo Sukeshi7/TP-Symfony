@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - Commentaires{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-4">Gestion des commentaires</h1>
+
+        <!-- Liste des commentaires -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-3">Liste des commentaires</h2>
+            <table class="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2">ID</th>
+                    <th class="border border-gray-300 px-4 py-2">Article</th>
+                    <th class="border border-gray-300 px-4 py-2">Auteur</th>
+                    <th class="border border-gray-300 px-4 py-2">Contenu</th>
+                    <th class="border border-gray-300 px-4 py-2">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">{{ comment.id }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ comment.idArticle.title }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ comment.idUser.firstname ~ ' ' ~ comment.idUser.lastname }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ comment.content }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            <a href="#" class="text-blue-500 hover:underline">Modifier</a> |
+                            <a href="#" class="text-red-500 hover:underline">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center text-gray-500 py-4">Aucun commentaire trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Formulaire d'ajout -->
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Ajouter un commentaire</h2>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="id_article" class="block text-sm font-medium text-gray-700">Article</label>
+                    <select id="id_article" name="id_article" class="form-select mt-1 block w-full">
+                        <!-- Options dynamiques à générer côté serveur -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="block text-sm font-medium text-gray-700">Contenu</label>
+                    <textarea id="content" name="content" rows="3" class="form-textarea mt-1 block w-full" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

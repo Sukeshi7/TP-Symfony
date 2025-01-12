@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Tableau de bord de l'administration</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gestion des utilisateurs -->
+            <div class="bg-white shadow rounded-lg p-4">
+                <h2 class="text-xl font-semibold mb-3">Utilisateurs</h2>
+                <p class="text-gray-600">Gérer les utilisateurs inscrits sur le site.</p>
+                <a href="{{ path('user') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Gérer les utilisateurs
+                </a>
+            </div>
+
+            <!-- Gestion des articles -->
+            <div class="bg-white shadow rounded-lg p-4">
+                <h2 class="text-xl font-semibold mb-3">Articles</h2>
+                <p class="text-gray-600">Créer, modifier ou supprimer des articles.</p>
+                <a href="{{ path('admin_article') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Gérer les articles
+                </a>
+            </div>
+
+            <!-- Gestion des commentaires -->
+            <div class="bg-white shadow rounded-lg p-4">
+                <h2 class="text-xl font-semibold mb-3">Commentaires</h2>
+                <p class="text-gray-600">Modérer et gérer les commentaires des articles.</p>
+                <a href="{{ path('admin_comment') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Gérer les commentaires
+                </a>
+            </div>
+
+            <!-- Gestion des catégories -->
+            <div class="bg-white shadow rounded-lg p-4">
+                <h2 class="text-xl font-semibold mb-3">Catégories</h2>
+                <p class="text-gray-600">Créer ou modifier les catégories d'articles.</p>
+                <a href="{{ path('admin_category') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Gérer les catégories
+                </a>
+            </div>
+
+            <!-- Gestion des langues -->
+            <div class="bg-white shadow rounded-lg p-4">
+                <h2 class="text-xl font-semibold mb-3">Langues</h2>
+                <p class="text-gray-600">Ajouter ou modifier les langues disponibles.</p>
+                <a href="{{ path('admin_language') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Gérer les langues
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+<header class="bg-gray-800 text-white p-4">
+    <nav class="container mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold">
+            <a href="{{ path('app_homepage') }}">Blog EEMI</a>
+        </div>
+
+        <div>
+            {% if app.user %}
+                <div class="flex items-center space-x-4">
+                    <span>Bienvenue {{ app.user.firstname ~ ' ' ~ app.user.lastname }}</span>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="bg-blue-500 text-white p-2 rounded">
+                            <a href="{{ path('admin') }}">Admin</a>
+                        </div>
+                        <div class="bg-green-500 text-white p-2 rounded">
+                            <a href="{{ path('profile') }}">Profil</a>
+                        </div>
+                    {% elseif is_granted('ROLE_BANNED') %}
+                        <div class="bg-red-500 text-white p-2 rounded">
+                            Vous êtes banni
+                        </div>
+                    {% else %}
+                        <div class="bg-green-500 text-white p-2 rounded">
+                            <a href="{{ path('profile') }}">Profil</a>
+                        </div>
+                    {% endif %}
+                    <form action="{{ path('app_logout') }}" method="post" class="inline-block">
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+                            Se déconnecter
+                        </button>
+                    </form>
+                </div>
+            {% else %}
+                <div>
+                    <a href="{{ path('app_login') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">Se connecter</a>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+</header>

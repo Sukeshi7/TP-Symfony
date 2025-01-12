@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - Utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-4">Gestion des utilisateurs</h1>
+
+        <!-- Liste des utilisateurs -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-3">Liste des utilisateurs</h2>
+            <table class="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2">ID</th>
+                    <th class="border border-gray-300 px-4 py-2">Nom</th>
+                    <th class="border border-gray-300 px-4 py-2">Email</th>
+                    <th class="border border-gray-300 px-4 py-2">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">{{ user.id }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ user.firstname ~ ' ' ~ user.lastname }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ user.email }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            <a href="#" class="text-blue-500 hover:underline">Modifier</a> |
+                            <a href="#" class="text-red-500 hover:underline">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-gray-500 py-4">Aucun utilisateur trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Formulaire d'ajout -->
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Ajouter un utilisateur</h2>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="firstname" class="block text-sm font-medium text-gray-700">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" class="form-input mt-1 block w-full" required>
+                </div>
+                <div class="mb-3">
+                    <label for="lastname" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <input type="text" id="lastname" name="lastname" class="form-input mt-1 block w-full" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" class="form-input mt-1 block w-full" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

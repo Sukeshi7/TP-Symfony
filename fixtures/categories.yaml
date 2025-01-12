@@ -1,0 +1,24 @@
+App\Entity\Category:
+    cat_economy:
+        name: 'Économie'
+        description: 'économie / finances / commerce.'
+
+    cat_culture:
+        name: 'Culture'
+        description: 'art, événements culturels.'
+
+    cat_internet:
+        name: 'Internet'
+        description: 'web / nouvelles technologies.'
+
+    cat_science:
+        name: 'Science'
+        description: 'découvertes scientifiques / recherche / innovations.'
+
+    cat_sport:
+        name: 'Sport'
+        description: 'sport / compétitions.'
+
+    cat_politics:
+        name: 'Politique'
+        description: 'débats / élections / gouvernance.'

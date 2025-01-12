@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold mb-4">{{ article.title }}</h1>
+        <p class="text-gray-600">Par {{ article.idUser.firstname ~ ' ' ~ article.idUser.lastname }}</p>
+        <p class="text-gray-500 text-sm">
+            Publié le {{ article.creationDate|date('d/m/Y H:i') }}
+            {% if article.updateDate %}
+                (Mis à jour le {{ article.updateDate|date('d/m/Y H:i') }})
+            {% endif %}
+        </p>
+
+        <div class="my-4">
+            <p class="text-lg">{{ article.content }}</p>
+        </div>
+
+        <p class="text-sm text-gray-700">
+            Langue : {{ article.idLanguage.name }}<br>
+            Catégorie :
+            <a href="{{ path('category_articles', { id: article.idCategory.id }) }}" class="text-blue-500 hover:underline">
+                {{ article.idCategory.name }}
+            </a>
+        </p>
+
+        <a href="{{ path('app_homepage') }}" class="text-blue-500 hover:underline mt-6 block">
+            Retour à l'accueil
+        </a>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-semibold mb-4">Commentaires</h2>
+
+            {% if article.comments|length > 0 %}
+                <div class="space-y-4">
+                    {% for comment in article.comments %}
+                        <div class="border rounded-lg p-4 bg-gray-100">
+                            <p class="font-medium text-gray-800">{{ comment.idUser.firstname ~ ' ' ~ comment.idUser.lastname }}</p>
+                            <p class="text-gray-600 mt-1">{{ comment.content }}</p>
+                            <p class="text-xs text-gray-400 mt-2">Publié le {{ comment.date|date('d/m/Y H:i') }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-gray-500">Aucun commentaire pour cet article.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

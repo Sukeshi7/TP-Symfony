@@ -1,0 +1,13 @@
+<aside class="sidebar bg-blue-300 p-4 w-64 min-h-screen border-r border-gray-300">
+    <h2 class="text-xl font-semibold mb-4">Catégories</h2>
+    <ul>
+        {% for category in categories %}
+            <li class="my-2">
+                <a href="{{ path('category_articles', {'id': category.id}) }}"
+                   class="block px-4 py-2 text-gray-800 rounded-lg border border-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-200">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</aside>

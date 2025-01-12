@@ -1,0 +1,35 @@
+App\Entity\Comment:
+    comment_template (template):
+        id_user: '<randomElement([@user_user_1, @user_user_2, @user_user_3, @user_user_4, @user_user_5])>'
+        content: '<paragraphs(1, true)>'
+        date: '<dateTimeBetween("-30 days", "-10 days")>'
+
+    comment_article_1_{1..2} (extends comment_template):
+        id_article: '@article_cat_economy_fr_1'
+
+    comment_article_2_{1..2} (extends comment_template):
+        id_article: '@article_cat_economy_fr_2'
+
+    comment_article_3_{1..2} (extends comment_template):
+        id_article: '@article_cat_economy_fr_3'
+
+    comment_article_4_{1..2} (extends comment_template):
+        id_article: '@article_cat_culture_fr_1'
+
+    comment_article_5_{1..2} (extends comment_template):
+        id_article: '@article_cat_culture_fr_2'
+
+    comment_article_6_{1..2} (extends comment_template):
+        id_article: '@article_cat_culture_fr_3'
+
+    comment_article_7_{1..2} (extends comment_template):
+        id_article: '@article_cat_internet_en_1'
+
+    comment_article_8_{1..2} (extends comment_template):
+        id_article: '@article_cat_internet_en_2'
+
+    comment_article_9_{1..2} (extends comment_template):
+        id_article: '@article_cat_science_en_1'
+
+    comment_article_10_{1..2} (extends comment_template):
+        id_article: '@article_cat_science_en_2'

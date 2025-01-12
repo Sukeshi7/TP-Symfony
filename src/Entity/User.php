@@ -2,14 +2,16 @@
 
 namespace App\Entity;
 
-use App\Enum\UserRoleEnum;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -40,9 +42,11 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
-    #[ORM\Column(enumType: UserRoleEnum::class)]
-    private ?UserRoleEnum $role = null;
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $resetToken = null;
 
     public function __construct()
     {
@@ -163,15 +167,43 @@ class User
         return $this;
     }
 
-    public function getRole(): ?UserRoleEnum
-    {
-        return $this->role;
-    }
 
-    public function setRole(UserRoleEnum $role): static
+	public function eraseCredentials(): void
+	{
+
+	}
+
+	public function getUserIdentifier(): string
+	{
+		return (string) $this->email;
+	}
+
+	public function getRoles(): array
+	{
+		$roles = $this->roles ?? [];
+		$roles[] = 'ROLE_USER';
+		return array_unique($roles);
+	}
+
+
+	public function setRoles(array $roles): static
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): static
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+
 }

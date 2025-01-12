@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="">
+        <h1 class="text-4xl mb-4 font-bold">Bienvenue sur le Blog EEMI !</h1>
+
+        <!-- Liste des articles les plus récents -->
+        {% include 'parts/articles_list.html.twig' with {
+            title: 'Articles les plus récents',
+            articles: recentArticles
+        } only %}
+
+        <!-- Liste des articles aléatoires -->
+        {% include 'parts/articles_list.html.twig' with {
+            title: 'Articles aléatoires',
+            articles: randomArticles
+        } only %}
+    </div>
+{% endblock %}

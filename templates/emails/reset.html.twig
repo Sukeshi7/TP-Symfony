@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réinitialisation de votre mot de passe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Réinitialisation de votre mot de passe</h1>
+
+    <p>Bonjour,</p>
+
+    <p>Vous avez demandé à réinitialiser votre mot de passe. Pour continuer, cliquez sur le lien ci-dessous :</p>
+
+    <div class="button-container">
+        <a href="{{ url('reset_password', { token: resetToken }) }}">
+            Réinitialiser mon mot de passe
+        </a>
+    </div>
+
+    <p>Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet email.</p>
+
+    <div class="footer">
+        <p>Merci,</p>
+        <p>L'équipe de votre site</p>
+        <div class="button-container"><a href="{{ url('app_homepage') }}">Retour à l'accueil</a></div>
+    </div>
+</div>
+
+</body>
+</html>
