@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'article{% endblock %}
+
+{% block body %}
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Modifier l'article</h1>
+
+        <div class="bg-gray-100 p-4 rounded-lg">
+            {{ form_start(form) }}
+            <div class="space-y-4">
+                {{ form_widget(form) }}
+                <div class="flex space-x-2">
+                    <button type="submit" name="action" value="update"
+                            class="w-full bg-green-500 text-white py-2 rounded-lg shadow hover:bg-green-600 transition">
+                        Mettre à jour
+                    </button>
+
+                    <button type="submit" name="action" value="rewrite"
+                            class="w-full bg-red-500 text-white py-2 rounded-lg shadow hover:bg-red-600 transition">
+                        Réécrire l'article via IA
+                    </button>
+
+                    <button type="submit" name="action" value="partially_rewrite"
+                            class="w-full bg-blue-500 text-white py-2 rounded-lg shadow hover:bg-blue-600 transition">
+                        Réécrire partiellement l'article via IA*
+                    </button>
+                </div>
+                <div class="text-center max-w-2xl mx-auto">*Pour réécrire uniquement une partie spécifique de l'article, ou pour simplement ajouter des paragraphes, veillez bien à baliser la zone concernée ainsi [+ <span class="italic">paragraphe à modifier</span> +], puis cliquez sur le bouton "Réécrire partiellement l'article via IA".</div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+
+        <div class="mt-6 flex justify-between">
+            <a href="{{ path('/') }}" class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
+                ⬅ Retour à la liste
+            </a>
+
+            <form method="post" action="{{ path('app_article_crud_delete', {'id': article.id}) }}"
+                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                <button class="px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition">
+                    Supprimer
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

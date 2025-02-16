@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article généré par l'IA{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">📝 Article généré par l'IA</h1>
+
+    <div class="max-w-2xl mx-auto mt-6 bg-white p-6 rounded-lg shadow-lg">
+        {{ form_start(formConfirm, {'attr': {'class': 'space-y-4'}}) }}
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(formConfirm.category) }}</label>
+            {{ form_widget(formConfirm.category, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(formConfirm.language) }}</label>
+            {{ form_widget(formConfirm.language, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(formConfirm.title) }}</label>
+            {{ form_widget(formConfirm.title, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(formConfirm.article) }}</label>
+            {{ form_widget(formConfirm.article, {'attr': {'class': 'border rounded-lg p-2 h-48'}}) }}
+        </div>
+
+        <div class="text-center">
+            <button type="submit"
+                    class="bg-green-500 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
+                ✅ Confirmer l'article
+            </button>
+        </div>
+
+        {{ form_end(formConfirm) }}
+    </div>
+{% endblock %}

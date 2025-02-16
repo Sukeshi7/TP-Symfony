@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Générer un Article avec l'IA{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">📝 Générer un Article avec l'IA</h1>
+
+    <div class="flex justify-center">
+        <a href="{{ path('app_article_crud_new_manual') }}"
+           class="bg-blue-400 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-500 transition">
+            ✍️ Rédiger manuellement
+        </a>
+    </div>
+
+    <div class="max-w-lg mx-auto mt-6 bg-white p-6 rounded-lg shadow-lg">
+        {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(form.category) }}</label>
+            {{ form_widget(form.category, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(form.language) }}</label>
+            {{ form_widget(form.language, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(form.keywords) }}</label>
+            {{ form_widget(form.keywords, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="flex flex-col">
+            <label class="font-medium text-gray-700">{{ form_label(form.description) }}</label>
+            {{ form_widget(form.description, {'attr': {'class': 'border rounded-lg p-2'}}) }}
+        </div>
+
+        <div class="text-center">
+            <button type="submit"
+                    class="bg-green-500 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-green-600 transition">
+                🚀 Générer l'article
+            </button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
