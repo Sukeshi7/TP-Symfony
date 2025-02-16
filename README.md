@@ -1,5 +1,7 @@
 
-# Projet Symfony - Gestion des Articles et Catégories
+# Projet Symfony - Gestion des Articles et Catégories + Projet IA
+
+//J'ai un peu chié les crud parce que j'avais mal compris donc c'est légèrement le bordel niveau templates 
 
 ## Prérequis
 
